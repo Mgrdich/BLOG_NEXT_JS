@@ -1,7 +1,8 @@
 import {FC} from 'react';
 import styled from "styled-components";
+import Image from "next/image";
 
-const HeroCmp = styled.div`
+const HeroSection = styled.section`
   text-align: center;
   background-image: linear-gradient(to bottom,
   var(--color-grey-900),
@@ -19,7 +20,7 @@ const ImageContainer = styled.div`
   margin: auto;
 `;
 
-const Image = styled.image`
+const Image1 = styled.image`
   object-fit: cover;
   object-position: top;
   width: 100%;
@@ -42,9 +43,15 @@ const Paragraph = styled.p`
 
 const Hero: FC = () => {
     return (
-        <>
-            <HeroCmp/>
-        </>
+       <HeroSection>
+           <ImageContainer>
+               <Image src="/images/site/profile.png" alt="An image Showing Mgo" width={300} height={300}/>
+           </ImageContainer>
+           <Header>Hi I am Mgo</Header>
+           <Paragraph>
+               I Do not know why i want to write Blogs but i always Do
+           </Paragraph>
+       </HeroSection>
     );
 };
 
