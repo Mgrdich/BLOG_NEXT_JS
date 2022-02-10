@@ -1,6 +1,8 @@
 import {FC} from 'react';
 import Logo from "./Logo";
 import Link from "next/link";
+import styled from "styled-components";
+
 
 const MainNavigation: FC = () => {
     return (
