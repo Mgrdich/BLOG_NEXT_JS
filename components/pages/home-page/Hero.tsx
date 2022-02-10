@@ -20,7 +20,7 @@ const ImageContainer = styled.div`
   margin: auto;
 `;
 
-const Image1 = styled.image`
+const ImageCmp = styled(Image)`
   object-fit: cover;
   object-position: top;
   width: 100%;
@@ -45,7 +45,11 @@ const Hero: FC = () => {
     return (
        <HeroSection>
            <ImageContainer>
-               <Image src="/images/site/profile.png" alt="An image Showing Mgo" width={300} height={300}/>
+               <ImageCmp src="/images/site/profile.jpg"
+                         alt="An image Showing Mgo"
+                         width={300}
+                         height={300}
+               />
            </ImageContainer>
            <Header>Hi I am Mgo</Header>
            <Paragraph>
