@@ -5,11 +5,16 @@ import Link from "next/link";
 const MainNavigation: FC = () => {
     return (
         <header>
-            <Logo/>
+            <Link href="/">
+                <a><Logo/></a>
+            </Link>
             <nav>
                 <ul>
                     <li>
-                        <Link href=""/> 
+                        <Link href="/posts">Posts</Link>
+                    </li>
+                    <li>
+                        <Link href="/contact">Contact</Link>
                     </li>
                 </ul>
             </nav>
