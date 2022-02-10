@@ -1,9 +1,15 @@
-import {FC} from 'react';
+import {FC, ReactNode} from 'react';
+import MainNavigation from "./MainNavigation";
 
-const Layout:FC = () => {
+interface ILayout {
+    children: ReactNode
+}
+
+const Layout: FC<ILayout> = ({children}) => {
     return (
         <>
-            
+            <MainNavigation/>
+            <main>{children}</main>
         </>
     );
 };
