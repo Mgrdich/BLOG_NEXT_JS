@@ -1,5 +1,6 @@
 import {FC} from "react";
 import styled from "styled-components";
+import {postType} from "../../types/components/posts";
 
 const StyledPosts = styled.div`
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
@@ -38,7 +39,7 @@ const StyledP = styled.p`
 `;
 
 interface IPostItem {
-
+    post: postType
 }
 
 const PostItem: FC<IPostItem> = () => {

@@ -1,5 +1,7 @@
 import {FC} from "react";
 import styled from "styled-components";
+import PostItem from "./PostItem";
+import {postsType} from "../../types/components/posts";
 
 const StyledGrid = styled.ul`
   list-style: none;
@@ -13,14 +15,16 @@ const StyledGrid = styled.ul`
 
 
 interface IPostsGrid {
-
+    posts: postsType
 }
 
-const PostsGrid: FC<IPostsGrid> = () => {
+const PostsGrid: FC<IPostsGrid> = ({posts}) => {
     return (
-        <>
-
-        </>
+        <StyledGrid>
+            {
+                posts.map(post => <PostItem key={post.id} post={post}/>)
+            }
+        </StyledGrid>
     );
 };
 
