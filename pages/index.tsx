@@ -2,32 +2,16 @@ import type {NextPage} from 'next'
 import Hero from "../components/pages-component/home-page/Hero";
 import FeaturedPosts from "../components/pages-component/home-page/FeaturedPosts";
 import {postsType} from "../types/components/posts";
+import {POSTS} from "../dummy/data";
 
 
-const posts: postsType = [
-    {
-        id: '1',
-        header: 'Header1',
-        time: "10-10-2011",
-        slug: "slug1",
-        image: "image1.png",
-        paragraph: "some long text is working here"
-    },
-    {
-        id: '2',
-        header: 'Header2',
-        time: "10-10-2013",
-        slug: "slug2",
-        image: "image2.png",
-        paragraph: "some long text is working here"
-    }
-];
+
 
 const HomePage: NextPage = () => {
     return (
         <>
             <Hero/>
-            <FeaturedPosts posts={posts}/>
+            <FeaturedPosts posts={POSTS}/>
         </>
     )
 };
