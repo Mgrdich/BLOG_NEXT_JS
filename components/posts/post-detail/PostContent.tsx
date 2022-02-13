@@ -1,6 +1,7 @@
 import {FC} from 'react';
 import styled from "styled-components";
 import PostHeader from "./PostHeader";
+import ReactMarkdown from "react-markdown";
 
 const StyledArticle = styled.article`
   width: 95%;
@@ -41,7 +42,7 @@ const PostContent: FC<IPostContent> = ({content, title, image, slug}) => {
                 image={image}
                 slug={slug}
             />
-            {content}
+            <ReactMarkdown>{content}</ReactMarkdown>
         </StyledArticle>
     );
 };
