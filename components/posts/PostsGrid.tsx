@@ -22,7 +22,10 @@ const PostsGrid: FC<IPostsGrid> = ({posts}) => {
     return (
         <StyledGrid>
             {
-                posts.map(post => <PostItem key={post.id} post={post}/>)
+                posts.map(post => <PostItem key={post.id}
+                                            post={post}
+                    />
+                )
             }
         </StyledGrid>
     );

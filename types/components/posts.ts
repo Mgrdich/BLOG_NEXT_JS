@@ -1,5 +1,9 @@
 export interface postType {
-    id: string
+    id: string,
+    title: string,
+    src: string,
+    time: string,
+    paragraph: string
 }
 
 export type postsType = postType[];
