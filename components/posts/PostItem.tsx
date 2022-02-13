@@ -65,7 +65,7 @@ const PostItem: FC<IPostItem> = ({post}) => {
                         <Image src={imagePath}
                                alt={post.header}
                                width={300} height={200}
-                               layout="re"
+                               layout="responsive"
                         />
                     </StyledImage>
                     <StyledContent>
