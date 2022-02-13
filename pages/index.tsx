@@ -9,14 +9,16 @@ const posts: postsType = [
         id: '1',
         header: 'Header1',
         time: "10-10-2011",
-        slug: "/",
+        slug: "nextPosts",
+        image: "post1.png",
         paragraph: "some long text is working here"
     },
     {
         id: '2',
         header: 'Header2',
         time: "10-10-2013",
-        slug: "/",
+        slug: "nextPosts",
+        image: "post3.png",
         paragraph: "some long text is working here"
     }
 ];

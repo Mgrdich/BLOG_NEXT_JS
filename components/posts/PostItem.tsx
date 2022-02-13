@@ -54,7 +54,8 @@ const PostItem: FC<IPostItem> = ({post}) => {
             year: "numeric"
         });
 
-    const imagePath:string = `/images/posts/${post.slug}`
+    const imagePath:string = `/images/posts/${post.slug}/${post.image}`;
+    const linkPath :string = `/posts/${post.slug}`;
 
     return (
         <StyledPost>
