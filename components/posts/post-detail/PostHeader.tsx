@@ -1,7 +1,8 @@
 import {FC} from 'react';
+import Image from "next/image";
 import styled from "styled-components";
 
-const StyledHeader = styled.div`
+const StyledHeader = styled.header`
   padding-bottom: var(--size-8);
   border-bottom: 8px solid var(--color-primary-100);
   margin: var(--size-4) 0;
@@ -37,11 +38,23 @@ const StyledH1 = styled.h1`
   }
 `;
 
-const PostHeader: FC = () => {
-    return (
-        <>
+interface IPostHeader {
+    title: string,
+    image: string
+}
 
-        </>
+const PostHeader: FC<IPostHeader> = ({title, image}) => {
+
+
+    return (
+        <StyledHeader>
+            <StyledH1>{title}</StyledH1>
+            <Image src={image}
+                   height={150}
+                   width={200}
+                   alt={title}
+            />
+        </StyledHeader>
     );
 };
 

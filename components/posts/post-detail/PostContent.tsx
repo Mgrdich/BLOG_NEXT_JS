@@ -1,8 +1,8 @@
 import {FC} from 'react';
 import styled from "styled-components";
+import PostHeader from "./PostHeader";
 
-
-const StyledContent = styled.div`
+const StyledArticle = styled.article`
   width: 95%;
   max-width: 60rem;
   margin: var(--size-8) auto;
@@ -26,12 +26,21 @@ const StyledImageCont = styled.div`
   max-width: 600px;
 `;
 
+interface IPostContent {
+    content: string,
+    title: string,
+    image: string
+}
 
-const PostContent: FC = () => {
+const PostContent: FC<IPostContent> = ({content, title, image}) => {
     return (
-        <>
-
-        </>
+        <StyledArticle>
+            <PostHeader
+                title={title}
+                image={image}
+            />
+            {content}
+        </StyledArticle>
     );
 };
 
