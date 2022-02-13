@@ -59,7 +59,7 @@ const PostItem: FC<IPostItem> = ({post}) => {
 
     return (
         <StyledPost>
-            <Link href="/">
+            <Link href={linkPath}>
                 <a>
                     <StyledImage>
                         <Image src={imagePath} alt={post.header} width={300} height={200}/>
