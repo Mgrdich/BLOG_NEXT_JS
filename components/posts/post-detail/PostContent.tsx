@@ -29,15 +29,17 @@ const StyledImageCont = styled.div`
 interface IPostContent {
     content: string,
     title: string,
-    image: string
+    image: string,
+    slug: string
 }
 
-const PostContent: FC<IPostContent> = ({content, title, image}) => {
+const PostContent: FC<IPostContent> = ({content, title, image, slug}) => {
     return (
         <StyledArticle>
             <PostHeader
                 title={title}
                 image={image}
+                slug={slug}
             />
             {content}
         </StyledArticle>

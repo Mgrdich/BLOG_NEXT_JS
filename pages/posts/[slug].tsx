@@ -12,6 +12,7 @@ const PostDetailPage: NextPage = () => {
             <PostContent content={DummyPost.paragraphDetailed}
                          title={DummyPost.header}
                          image={DummyPost.image}
+                         slug={DummyPost.slug}
             />
         </>
     );

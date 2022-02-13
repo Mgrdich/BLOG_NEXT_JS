@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styled from "styled-components";
 import {postType} from "../../types/components/posts";
+import Lib from "../../util/Lib";
 
 const StyledPost = styled.li`
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
@@ -54,7 +55,8 @@ const PostItem: FC<IPostItem> = ({post}) => {
             year: "numeric"
         });
 
-    const imagePath:string = `/images/posts/${post.slug}/${post.image}`;
+    const imagePath:string = Lib.getPostsImagesLoc(post.slug, post.image);
+
     const linkPath :string = `/posts/${post.slug}`;
 
     return (
