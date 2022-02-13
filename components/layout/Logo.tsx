@@ -17,9 +17,9 @@ const StyledText = styled.div`
 const Logo: FC = () => {
     return (
         <Link href="/">
-                <StyledText>
-                    MGO Website
-                </StyledText>
+            <StyledText>
+                MGO Website
+            </StyledText>
         </Link>
     );
 };
