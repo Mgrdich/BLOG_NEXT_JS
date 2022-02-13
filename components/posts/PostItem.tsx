@@ -47,17 +47,26 @@ interface IPostItem {
 }
 
 const PostItem: FC<IPostItem> = ({post}) => {
+    const formattedDate: string = new Date(post.time)
+        .toLocaleDateString('en-US', {
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+        });
+
+    const imagePath:string = `/images/posts/${post.slug}`
+
     return (
         <StyledPost>
             <Link href="/">
                 <a>
                     <StyledImage>
-                        <Image src={post.src} alt=""/>
+                        <Image src={imagePath} alt={post.header} width={300} height={200}/>
                     </StyledImage>
                     <StyledContent>
-                        <StyledH3>Title</StyledH3>
-                        <StyledTime>10.11.2021</StyledTime>
-                        <StyledP>Some text here</StyledP>
+                        <StyledH3>{post.header}</StyledH3>
+                        <StyledTime>{formattedDate}</StyledTime>
+                        <StyledP>{post.paragraph}</StyledP>
                     </StyledContent>
                 </a>
             </Link>

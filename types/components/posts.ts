@@ -1,8 +1,8 @@
 export interface postType {
     id: string,
-    title: string,
-    src: string,
-    time: string,
+    header: string,
+    slug: string,
+    time: number | string | Date,
     paragraph: string
 }
 

@@ -1,5 +1,7 @@
 import {FC} from 'react';
 import styled from "styled-components";
+import PostsGrid from "../../posts/PostsGrid";
+import {postsType} from "../../../types/components/posts";
 
 const Latest = styled.section`
   width: 90%;
@@ -12,15 +14,19 @@ const Header2 = styled.h2`
   color: var(--color-grey-800);
   text-align: center;
   @media (min-width: 768px) {
-      font-size: var(--size-16);
+    font-size: var(--size-16);
   }
 `
 
-const FeaturedPosts: FC = () => {
+interface IFeaturedPosts {
+    posts: postsType
+}
+
+const FeaturedPosts: FC<IFeaturedPosts> = ({posts}) => {
     return (
         <Latest>
             <Header2> Featured Posts </Header2>
-
+            <PostsGrid posts={posts}/>
         </Latest>
     );
 };
