@@ -1,20 +1,23 @@
-import type {NextPage} from 'next'
+import type {GetStaticProps, NextPage} from 'next'
 import Hero from "../components/pages-component/home-page/Hero";
 import FeaturedPosts from "../components/pages-component/home-page/FeaturedPosts";
-import {POSTS} from "../dummy/data";
 import {postDetails} from "../types/posts";
 import Lib_Posts from "../util/Lib_Posts";
 
-const HomePage: NextPage = () => {
+interface IStaticProps {
+    posts: postDetails
+}
+
+const HomePage: NextPage<IStaticProps> = ({posts}) => {
     return (
         <>
             <Hero/>
-            <FeaturedPosts posts={POSTS}/>
+            <FeaturedPosts posts={posts}/>
         </>
     )
 };
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps<IStaticProps> = async () => {
     const featuredPosts: postDetails = await Lib_Posts.getFeaturedPosts();
 
     return {
@@ -23,6 +26,6 @@ export async function getStaticProps() {
         },
         revalidate: 60
     };
-}
+};
 
 export default HomePage

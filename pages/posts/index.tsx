@@ -1,16 +1,19 @@
-import {NextPage} from "next";
+import {GetStaticProps, NextPage} from "next";
 import AllPosts from "../../components/posts/AllPosts";
-import {POSTS} from "../../dummy/data";
 import {postDetails} from "../../types/posts";
 import Lib_Posts from "../../util/Lib_Posts";
 
-const AllPostsPage: NextPage = () => {
+interface IStaticProps {
+    posts: postDetails
+}
+
+const AllPostsPage: NextPage<IStaticProps> = ({posts}) => {
     return (
-        <AllPosts posts={POSTS}/>
+        <AllPosts posts={posts}/>
     );
 };
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps<IStaticProps> = async () => {
     const allPosts: postDetails = await Lib_Posts.getAllPosts();
 
     return {
