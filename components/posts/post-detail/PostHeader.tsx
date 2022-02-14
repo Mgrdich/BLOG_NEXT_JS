@@ -2,6 +2,7 @@ import {FC} from 'react';
 import Image from "next/image";
 import styled from "styled-components";
 import Lib from "../../../util/Lib";
+import Lib_Posts from "../../../util/Lib_Posts";
 
 const StyledHeader = styled.header`
   padding-bottom: var(--size-8);
@@ -47,7 +48,7 @@ interface IPostHeader {
 
 const PostHeader: FC<IPostHeader> = ({title, image, slug}) => {
 
-    const imagePath: string = Lib.getPostsImagesLoc(slug, image);
+    const imagePath: string = Lib_Posts.getPostsImagesLoc(slug, image);
 
     return (
         <StyledHeader>
