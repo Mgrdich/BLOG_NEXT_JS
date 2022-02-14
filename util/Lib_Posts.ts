@@ -1,7 +1,7 @@
 import fs from 'fs/promises';
 import path from "path";
 import matter from "gray-matter";
-import {postDetail, postType} from "../types/posts";
+import {postDetail, postDetails, postType} from "../types/posts";
 
 
 export default class Lib_Posts {
@@ -35,7 +35,7 @@ export default class Lib_Posts {
         }
     }
 
-    static async getAllPosts(): Promise<postDetail[]> {
+    static async getAllPosts(): Promise<postDetails> {
         const posts: string[] = await this.fetchAllPosts();
         let p: Promise<postDetail>[] = posts.map((postFile) => {
             return this.getPost(postFile)
@@ -43,7 +43,7 @@ export default class Lib_Posts {
         return Promise.all(p);
     }
 
-    static async getFeaturedPosts(): Promise<postDetail[]> {
+    static async getFeaturedPosts(): Promise<postDetails> {
         const posts: postDetail[] = await this.getAllPosts();
 
         return posts.filter(item => item.isFeatured);
