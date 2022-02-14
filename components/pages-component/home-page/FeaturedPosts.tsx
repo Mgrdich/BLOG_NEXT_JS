@@ -1,7 +1,7 @@
 import {FC} from 'react';
 import styled from "styled-components";
 import PostsGrid from "../../posts/PostsGrid";
-import {postsType} from "../../../types/components/posts";
+import {postsType} from "../../../types/posts";
 
 const Latest = styled.section`
   width: 90%;

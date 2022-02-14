@@ -2,7 +2,7 @@ import {FC} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import styled from "styled-components";
-import {postType} from "../../types/components/posts";
+import {postType} from "../../types/posts";
 import Lib_Posts from "../../util/Lib_Posts";
 
 const StyledPost = styled.li`

@@ -1,4 +1,4 @@
-import {postDetails, postsType, postType} from "../types/components/posts";
+import {postDetails, postsType, postType} from "../types/posts";
 
 export const POSTS: postsType = [
     {

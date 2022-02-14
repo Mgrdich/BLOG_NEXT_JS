@@ -1,7 +1,7 @@
 import {FC} from "react";
 import styled from "styled-components";
 import PostItem from "./PostItem";
-import {postsType} from "../../types/components/posts";
+import {postsType} from "../../types/posts";
 
 const StyledGrid = styled.ul`
   list-style: none;
