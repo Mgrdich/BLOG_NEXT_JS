@@ -16,6 +16,13 @@ const HomePage: NextPage = () => {
 
 export async function getStaticProps() {
     const featuredPosts: postDetails = await Lib_Posts.getFeaturedPosts();
+
+    return {
+        props: {
+            posts: featuredPosts
+        },
+        revalidate: 60
+    };
 }
 
 export default HomePage

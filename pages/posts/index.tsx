@@ -12,6 +12,13 @@ const AllPostsPage: NextPage = () => {
 
 export async function getStaticProps() {
     const allPosts: postDetails = await Lib_Posts.getAllPosts();
+
+    return {
+        props: {
+            posts: allPosts
+        },
+        revalidate: 60
+    };
 }
 
 export default AllPostsPage;
