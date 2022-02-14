@@ -22,15 +22,6 @@ export default class Lib_Posts {
         return fs.readFile(filePath, {encoding: 'utf-8'});
     }
 
-    static async getAllPosts(): Promise<postDetail[]> {
-        const posts: string[] = await this.fetchAllPosts();
-        let p: Promise<postDetail>[] = []
-        for (const postFile of posts) {
-            p.push(this.getPost(postFile));
-        }
-        return Promise.all(p);
-    }
-
     static async getPost(fileName: string): Promise<postDetail> {
         const post: string = await this.fetchPost(fileName);
         let {data, content} = matter(post);
@@ -40,7 +31,21 @@ export default class Lib_Posts {
         return {
             ...data as postType,
             slug: postSlug,
-            paragraphDetailed:content
+            paragraphDetailed: content
         }
+    }
+
+    static async getAllPosts(): Promise<postDetail[]> {
+        const posts: string[] = await this.fetchAllPosts();
+        let p: Promise<postDetail>[] = posts.map((postFile) => {
+            return this.getPost(postFile)
+        });
+        return Promise.all(p);
+    }
+
+    static async getFeaturedPosts(): Promise<postDetail[]> {
+        const posts: postDetail[] = await this.getAllPosts();
+
+        return posts.filter(item => item.isFeatured);
     }
 }

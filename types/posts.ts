@@ -8,7 +8,8 @@ export interface postType {
 }
 
 export interface postDetail extends postType {
-    paragraphDetailed: string // this will be markdown code
+    paragraphDetailed: string // this will be markdown code,
+    isFeatured?: boolean
 }
 
 export type postsType = postType[];

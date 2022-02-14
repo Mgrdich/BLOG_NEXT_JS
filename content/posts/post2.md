@@ -5,6 +5,7 @@ time: '10-10-2011'
 slug: 'slug2'
 image: 'image2.png'
 paragraph: 'some long text is working here'
+isFeatured: true
 ---
 
 # This is the first Article 
