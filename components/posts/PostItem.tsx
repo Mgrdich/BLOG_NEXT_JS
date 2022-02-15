@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import styled from "styled-components";
 import {postType} from "../../types/posts";
-import Lib_Posts from "../../util/Lib_Posts";
+import Lib_Posts from "../../util/Lib_Posts_Server";
 
 const StyledPost = styled.li`
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);

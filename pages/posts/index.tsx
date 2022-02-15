@@ -1,7 +1,7 @@
 import {GetStaticProps, NextPage} from "next";
 import AllPosts from "../../components/posts/AllPosts";
 import {postDetails} from "../../types/posts";
-import Lib_Posts from "../../util/Lib_Posts";
+import Lib_Posts from "../../util/Lib_Posts_Server";
 
 interface IStaticProps {
     posts: postDetails

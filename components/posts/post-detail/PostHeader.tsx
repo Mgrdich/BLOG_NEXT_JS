@@ -1,7 +1,6 @@
 import {FC} from 'react';
 import Image from "next/image";
 import styled from "styled-components";
-import Lib from "../../../util/Lib";
 import Lib_Posts from "../../../util/Lib_Posts";
 
 const StyledHeader = styled.header`
