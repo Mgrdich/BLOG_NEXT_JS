@@ -1,7 +1,7 @@
 ---
 id: '1'
 header: 'Header1'
-time: '10-10-2011'
+time: '2011-9-9'
 slug: 'slug1'
 image: 'image1.png'
 paragraph: 'some long text is working here'
