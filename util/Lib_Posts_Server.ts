@@ -1,4 +1,4 @@
-import fs from "fs/promises";
+import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import {postDetail, postDetails, postType} from "../types/posts";
@@ -9,12 +9,28 @@ export default class Lib_Posts_Server {
     private static postsMarkdownDirectory = path.join(process.cwd(), 'content', 'posts');
 
     static async fetchAllPosts(): Promise<string[]> {
-        return fs.readdir(this.postsMarkdownDirectory);
+        return new Promise(function (resolve, reject) {
+            fs.readdir(Lib_Posts_Server.postsMarkdownDirectory, function (err, done) {
+                if (err) {
+                    return reject(err);
+                }
+
+                return resolve(done);
+            });
+        })
     }
 
     static async fetchPost(fileName: string): Promise<string> {
         const filePath: string = path.join(this.postsMarkdownDirectory, fileName);
-        return fs.readFile(filePath, {encoding: 'utf-8'});
+        return new Promise(function (resolve, reject) {
+            fs.readFile(filePath, {encoding: 'utf-8'}, function (err, done) {
+                if (err) {
+                    return reject(err);
+                }
+
+                return resolve(done);
+            });
+        })
     }
 
     static async getPost(fileName: string): Promise<postDetail> {
