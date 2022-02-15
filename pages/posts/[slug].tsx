@@ -25,9 +25,18 @@ const PostDetailPage: NextPage<IStaticProps> = ({post}) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
+    const postsFileNames: string[] = await Lib_Posts_Server.fetchAllPosts();
+
+    const paths = postsFileNames.map(function (item) {
+        const slug: string = item.replace(/\.md$/, '');
+        return {
+            params: {slug: slug}
+        }
+    });
+
     return {
-        paths: [],
-        fallback: 'blocking'
+        paths: paths,
+        fallback: false
     };
 }
 
