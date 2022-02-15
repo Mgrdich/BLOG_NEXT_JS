@@ -1,21 +1,47 @@
-import {NextPage} from "next";
+import {GetStaticPaths, GetStaticProps, NextPage} from "next";
 import PostContent from "../../components/posts/post-detail/PostContent";
-import {POSTS_DETAILED} from "../../dummy/data";
 import {postDetail} from "../../types/posts";
+import {ParsedUrlQuery} from "querystring";
+import Lib_Posts_Server from "../../util/Lib_Posts_Server";
 
-const DummyPost: postDetail = POSTS_DETAILED[0];
+interface IStaticProps {
+    post: postDetail
+}
 
+interface IParams extends ParsedUrlQuery {
+    slug: string
+}
 
-const PostDetailPage: NextPage = () => {
+const PostDetailPage: NextPage<IStaticProps> = ({post}) => {
     return (
         <>
-            <PostContent content={DummyPost.paragraphDetailed}
-                         title={DummyPost.header}
-                         image={DummyPost.image}
-                         slug={DummyPost.slug}
+            <PostContent content={post.paragraphDetailed}
+                         title={post.header}
+                         image={post.image}
+                         slug={post.slug}
             />
         </>
     );
 };
+
+export const getStaticPaths: GetStaticPaths = async () => {
+    return {
+        paths: [],
+        fallback: 'blocking'
+    };
+}
+
+
+export const getStaticProps: GetStaticProps<IStaticProps> = async (context) => {
+    const {slug} = context.params as IParams
+    const post: postDetail = await Lib_Posts_Server.getPost(`${slug}.md`);
+
+    return {
+        props: {
+            post: post
+        },
+        revalidate: 600
+    }
+}
 
 export default PostDetailPage;
