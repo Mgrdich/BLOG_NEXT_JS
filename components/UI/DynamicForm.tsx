@@ -1,21 +1,46 @@
-import React from 'react';
+import {FC, FormEvent} from 'react';
+import {
+    StyledControls,
+    StyledControl,
+    StyledInput,
+    StyledTextArea,
+    StyledLabel
+} from "../../styled/global";
 
 export interface inputFormProps {
     label: string,
-    inputType: 'input' | 'textarea',
+    inputRender: 'input' | 'textarea',
+    inputType: 'text' | 'email' | 'password'
     name: string,
-    id?: string
+    id: string
 }
 
 interface IDynamicForm {
-    formData: inputFormProps[]
+    formData: inputFormProps[],
+    onSubmit?: Function
 }
 
-const DynamicForm: React.FC<IDynamicForm> = () => {
-    return (
-        <>
+const DynamicForm: FC<IDynamicForm> = ({formData, onSubmit}) => {
 
-        </>
+    const submitHandler = function (evt: FormEvent<HTMLFormElement>) {
+        onSubmit?.(evt);
+    }
+
+    return (
+        <form onSubmit={submitHandler}>
+            <StyledControls>
+                {
+                    formData.map((item: inputFormProps) => (
+                        <StyledControl key={item.id}>
+                            <StyledLabel>{item.label}</StyledLabel>
+                            <StyledInput type={item.inputType}
+                                         id={item.id}
+                            />
+                        </StyledControl>
+                    ))
+                }
+            </StyledControls>
+        </form>
     );
 };
 
