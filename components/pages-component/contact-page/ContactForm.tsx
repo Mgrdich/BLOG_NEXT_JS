@@ -2,7 +2,7 @@ import {FC} from 'react';
 import styled from "styled-components";
 
 
-const StyledContact = styled.div`
+const StyledContact = styled.section`
   margin: var(--size-8) auto;
   border-radius: 6px;
   background-color: var(--color-grey-100);
@@ -40,7 +40,7 @@ const StyledInput = styled.input`
   resize: none;
 `;
 
-const StyledTextArea = styled(StyledInput);
+const StyledTextArea = styled.textarea(StyledInput);
 
 const StyledControls = styled.div`
   display: flex;
@@ -75,11 +75,32 @@ const StyledButton = styled.button`
 `;
 
 
+// TODO Refactor this shit
 const ContactForm: FC = () => {
     return (
-        <>
+        <StyledContact>
+            <StyledH1>How i can help you?</StyledH1>
+            <form>
+                <StyledControls>
+                    <StyledControl>
+                        <StyledLabel>Your mail</StyledLabel>
+                        <StyledInput type="email" id="email" required/>
+                    </StyledControl>
+                    <StyledControl>
+                        <StyledLabel>Your Name</StyledLabel>
+                        <StyledInput type="text" id="name" required/>
+                    </StyledControl>
+                    <StyledControl>
+                        <StyledLabel>Your Message</StyledLabel>
+                        <StyledTextArea rows={5} id="message" required/>
+                    </StyledControl>
 
-        </>
+                    <StyledActions>
+                        <StyledButton>Send Message</StyledButton>
+                    </StyledActions>
+                </StyledControls>
+            </form>
+        </StyledContact>
     );
 };
 
