@@ -1,7 +1,9 @@
 import {FC} from 'react';
+import Image from "next/image";
 import styled from "styled-components";
 import PostHeader from "./PostHeader";
-import ReactMarkdown from "react-markdown";
+import ReactMarkdown, {Renderers} from "react-markdown";
+import Lib_Posts from "../../../util/Lib_Posts";
 
 const StyledArticle = styled.article`
   width: 95%;
@@ -15,6 +17,7 @@ const StyledArticle = styled.article`
   @media (min-width: 768px) {
     padding: var(--size-8);
   }
+
   img {
     max-width: 100%;
   }
@@ -38,6 +41,20 @@ interface IPostContent {
 }
 
 const PostContent: FC<IPostContent> = ({content, title, image, slug}) => {
+
+    const customRenderers = {
+        image({alt, src, title}: {
+            alt?: string;
+            src?: string;
+            title?: string;
+        }) {
+            const url: string = Lib_Posts.getPostsImagesLoc(slug, src ? src : '');
+            return (
+                <Image src={url} alt={alt} width={600} height={300}/>
+            );
+        }
+    }
+
     return (
         <StyledArticle>
             <PostHeader
@@ -45,7 +62,10 @@ const PostContent: FC<IPostContent> = ({content, title, image, slug}) => {
                 image={image}
                 slug={slug}
             />
-            <ReactMarkdown>{content}</ReactMarkdown>
+            <ReactMarkdown
+                renderers={customRenderers}
+                source={content}
+            />
         </StyledArticle>
     );
 };
