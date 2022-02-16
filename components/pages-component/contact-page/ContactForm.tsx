@@ -1,4 +1,4 @@
-import {FC} from 'react';
+import {FC, FormEvent} from 'react';
 import styled from "styled-components";
 import {
     StyledControls,
@@ -51,13 +51,18 @@ const StyledButton = styled.button`
   }
 `;
 
-
-// TODO Refactor this shit
 const ContactForm: FC = () => {
+
+    const submitHandler = function (evt: FormEvent<HTMLFormElement>) {
+        console.log(evt);
+        evt.preventDefault();
+
+    }
+
     return (
         <StyledContact>
             <StyledH1>How i can help you?</StyledH1>
-            <form>
+            <form onSubmit={submitHandler}>
                 <StyledControls>
                     <StyledControl>
                         <StyledLabel>Your mail</StyledLabel>
@@ -73,7 +78,7 @@ const ContactForm: FC = () => {
                     </StyledControl>
 
                     <StyledActions>
-                        <StyledButton>Send Message</StyledButton>
+                        <StyledButton type="submit">Send Message</StyledButton>
                     </StyledActions>
                 </StyledControls>
             </form>
