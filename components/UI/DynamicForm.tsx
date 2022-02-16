@@ -1,10 +1,17 @@
 import React from 'react';
 
-interface IDynamicForm {
-    formData: string[]
+export interface inputFormProps {
+    label: string,
+    inputType: 'input' | 'textarea',
+    name: string,
+    id?: string
 }
 
-const DynamicForm:React.FC<IDynamicForm> = () => {
+interface IDynamicForm {
+    formData: inputFormProps[]
+}
+
+const DynamicForm: React.FC<IDynamicForm> = () => {
     return (
         <>
 
