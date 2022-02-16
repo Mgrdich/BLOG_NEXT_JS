@@ -23,7 +23,11 @@ const DynamicForm: FC<IDynamicForm> = ({formData}) => {
                         <StyledLabel>{item.label}</StyledLabel>
                         {
                             item.inputRender === 'input' ?
-                                <StyledInput type={item.inputType} id={item.id}/> : <StyledTextArea id={item.id}/>
+                                <StyledInput type={item.inputType}
+                                             id={item.id}
+                                />
+                                : <StyledTextArea id={item.id}
+                                />
                         }
                     </StyledControl>
                 ))
