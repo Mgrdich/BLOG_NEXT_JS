@@ -42,10 +42,40 @@ const StyledInput = styled.input`
 
 const StyledTextArea = styled(StyledInput);
 
+const StyledControls = styled.div`
+  display: flex;
+  column-gap: 1rem;
+  flex-wrap: wrap;
+`;
+
+const StyledControl = styled.div`
+  flex: 1;
+  min-width: 10rem;
+`;
+
+const StyledActions = styled.div`
+  margin-top: var(--size-4);
+  text-align: right;
+`;
+
+const StyledButton = styled.button`
+  font: inherit;
+  cursor: pointer;
+  background-color: var(--color-primary-700);
+  border: 1px solid var(--color-primary-700);
+  padding: var(--size-2) var(--size-4);
+  border-radius: 4px;
+  color: var(--color-primary-50);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    background-color: var(--color-primary-500);
+    border-color: var(--color-primary-500);
+  }
+`;
 
 
-
-const ContactForm:FC = () => {
+const ContactForm: FC = () => {
     return (
         <>
 
