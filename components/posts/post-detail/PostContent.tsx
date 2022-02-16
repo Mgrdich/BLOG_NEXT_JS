@@ -15,6 +15,9 @@ const StyledArticle = styled.article`
   @media (min-width: 768px) {
     padding: var(--size-8);
   }
+  img {
+    max-width: 100%;
+  }
 `;
 
 const StyledParagraph = styled.p`

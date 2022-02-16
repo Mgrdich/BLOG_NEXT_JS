@@ -14,13 +14,11 @@ interface IParams extends ParsedUrlQuery {
 
 const PostDetailPage: NextPage<IStaticProps> = ({post}) => {
     return (
-        <>
-            <PostContent content={post.paragraphDetailed}
-                         title={post.header}
-                         image={post.image}
-                         slug={post.slug}
-            />
-        </>
+        <PostContent content={post.paragraphDetailed}
+                     title={post.header}
+                     image={post.image}
+                     slug={post.slug}
+        />
     );
 };
 
