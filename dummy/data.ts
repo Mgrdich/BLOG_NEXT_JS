@@ -14,7 +14,7 @@ export const POSTS: postsType = [
         header: 'Header2',
         time: "10-10-2013",
         slug: "post2",
-        image: "image2.png",
+        image: "image1.png",
         paragraph: "some long text is working here"
     }
 ];

@@ -50,7 +50,7 @@ const PostContent: FC<IPostContent> = ({content, title, image, slug}) => {
         }) {
             const url: string = Lib_Posts.getPostsImagesLoc(slug, src ? src : '');
             return (
-                <Image src={url} alt={alt} width={600} height={300}/>
+                <Image src={url} alt={alt} width={500} height={300}/>
             );
         }
     }
