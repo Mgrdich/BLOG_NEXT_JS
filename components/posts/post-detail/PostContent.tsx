@@ -42,16 +42,23 @@ interface IPostContent {
 
 const PostContent: FC<IPostContent> = ({content, title, image, slug}) => {
 
+    // TODO use memo here
     const customRenderers = {
-        image({alt, src, title}: {
-            alt?: string;
-            src?: string;
-            title?: string;
-        }) {
-            const url: string = Lib_Posts.getPostsImagesLoc(slug, src ? src : '');
-            return (
-                <Image src={url} alt={alt} width={500} height={300}/>
-            );
+        paragraph(paragraph: any) {
+            if (paragraph.children[0].type === 'img') {
+                const image = paragraph.children[0];
+                const url: string = Lib_Posts.getPostsImagesLoc(slug, image.props.src);
+                return (
+                    <StyledImageCont>
+                        <Image src={url}
+                               alt={image.props.alt}
+                               width={500}
+                               height={300}
+                        />
+                    </StyledImageCont>
+                );
+            }
+            return <p>{paragraph.children}</p>
         }
     }
 
