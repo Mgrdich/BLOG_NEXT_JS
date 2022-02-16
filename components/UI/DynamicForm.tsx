@@ -7,9 +7,11 @@ import {
     StyledLabel
 } from "../../styled/global";
 import {inputFormProps} from "../../types/components";
+import {Dict} from "../../types/global";
 
 interface IDynamicForm {
-    formData: inputFormProps[]
+    formData: inputFormProps[] ,
+    state: Dict
 }
 
 const DynamicForm: FC<IDynamicForm> = ({formData}) => {
