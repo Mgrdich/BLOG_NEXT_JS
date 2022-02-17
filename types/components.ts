@@ -1,7 +1,9 @@
+import {HTMLInputTypeAttribute} from "react";
+
 export interface inputFormProps {
     label: string,
     inputRender: 'input' | 'textarea',
-    inputType?: 'text' | 'email' | 'password'
+    inputType?: HTMLInputTypeAttribute
     name: string,
     id: string
 }
