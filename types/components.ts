@@ -7,3 +7,9 @@ export interface inputFormProps {
     name: string,
     id: string
 }
+
+export interface IFormElement {
+    label: string;
+    id: string;
+    name: string;
+}
