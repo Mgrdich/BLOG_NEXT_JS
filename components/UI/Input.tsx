@@ -2,7 +2,7 @@ import {FC, HTMLInputTypeAttribute} from 'react';
 import {
     StyledControl,
     StyledInput,
-    StyledLabel, StyledTextArea
+    StyledLabel
 } from "../../styled/global";
 
 interface IInput {

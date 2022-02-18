@@ -1,10 +1,6 @@
 import {FC} from 'react';
 import {
     StyledControls,
-    StyledControl,
-    StyledInput,
-    StyledTextArea,
-    StyledLabel
 } from "../../styled/global";
 import {inputFormProps} from "../../types/components";
 import {Dict} from "../../types/global";
