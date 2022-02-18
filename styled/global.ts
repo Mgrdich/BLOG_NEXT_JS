@@ -28,4 +28,11 @@ export const StyledControls = styled.div`
 export const StyledControl = styled.div`
   flex: 1;
   min-width: 10rem;
+  position: relative;
+`;
+
+export const StyledError = styled.label`
+  position: absolute;
+  color: red;
+  font-size: 14px;
 `;

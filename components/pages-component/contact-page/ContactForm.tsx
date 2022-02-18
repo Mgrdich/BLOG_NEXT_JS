@@ -1,12 +1,11 @@
 import {FC, FormEvent} from 'react';
 import styled from "styled-components";
 import {
-    StyledControls,
-    StyledControl,
-    StyledInput,
-    StyledTextArea,
-    StyledLabel
+    StyledControls
 } from "../../../styled/global";
+import {useForm} from "react-hook-form";
+import FormInput from "../../UI/FormInput";
+import FormTextarea from "../../UI/FormTextarea";
 
 
 const StyledContact = styled.section`
@@ -51,7 +50,15 @@ const StyledButton = styled.button`
   }
 `;
 
+
+type ContactFormFields = {
+    email: string;
+    name: string;
+    message: string;
+}
+
 const ContactForm: FC = () => {
+    const {register, handleSubmit, formState: {errors}} = useForm<ContactFormFields>();
 
     const submitHandler = function (evt: FormEvent<HTMLFormElement>) {
         console.log(evt);
@@ -64,19 +71,27 @@ const ContactForm: FC = () => {
             <StyledH1>How i can help you?</StyledH1>
             <form onSubmit={submitHandler}>
                 <StyledControls>
-                    <StyledControl>
-                        <StyledLabel>Your mail</StyledLabel>
-                        <StyledInput type="email" id="email" required/>
-                    </StyledControl>
-                    <StyledControl>
-                        <StyledLabel>Your Name</StyledLabel>
-                        <StyledInput type="text" id="name" required/>
-                    </StyledControl>
-                    <StyledControl>
-                        <StyledLabel>Your Message</StyledLabel>
-                        <StyledTextArea rows={5} id="message" required/>
-                    </StyledControl>
-
+                    <FormInput<ContactFormFields>
+                        label="Your mail"
+                        id="email"
+                        name="email"
+                        type="email"
+                        register={register}
+                    />
+                    <FormInput<ContactFormFields>
+                        label="Your Name"
+                        id="name"
+                        name="name"
+                        type="text"
+                        register={register}
+                    />
+                    <FormTextarea<ContactFormFields>
+                        label="Your Message"
+                        id="message"
+                        name="message"
+                        rows={5}
+                        register={register}
+                    />
                     <StyledActions>
                         <StyledButton type="submit">Send Message</StyledButton>
                     </StyledActions>

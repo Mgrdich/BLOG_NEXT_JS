@@ -1,16 +1,18 @@
 import {FC, ReactNode} from 'react';
-import {StyledLabel, StyledControl} from "../../styled/global";
+import {StyledLabel, StyledControl, StyledError} from "../../styled/global";
 
 interface IFormElement {
     label: string;
-    children: ReactNode
+    children: ReactNode,
+    error?: string
 }
 
-const FormElement: FC<IFormElement> = ({label, children}) => {
+const FormElement: FC<IFormElement> = ({label, children, error}) => {
     return (
         <StyledControl>
             <StyledLabel>{label}</StyledLabel>
             {children}
+            <StyledError>{error}</StyledError>
         </StyledControl>
     );
 };

@@ -1,4 +1,5 @@
-import {inputFormProps} from "../../UI/DynamicForm";
+import {inputFormProps} from "../../../types/components";
+
 
 const ContactFormInputs: inputFormProps[] = []
 
