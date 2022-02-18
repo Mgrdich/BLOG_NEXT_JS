@@ -11,7 +11,11 @@ interface IInput extends InputHTMLAttributes<HTMLInputElement> {
 const Input: FC<IInput> = forwardRef<HTMLInputElement, IInput>(
     ({id, name, ...props}, ref) => {
         return (
-                <StyledInput {...props} name={name} id={id} ref={ref}/>
+                <StyledInput {...props}
+                             name={name}
+                             id={id}
+                             ref={ref}
+                />
         );
     }
 );

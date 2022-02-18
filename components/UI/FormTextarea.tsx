@@ -9,11 +9,17 @@ const FormTextarea = <TFormValues extends Record<string, unknown>>
 ({
      label,
      id,
-     name
+     name,
+     register,
+     rules,
+     errors,
  }: IFormTextarea<TFormValues>) => {
     return (
         <FormElement label={label}>
-            <Textarea id={id} name={name}/>
+            <Textarea id={id}
+                      name={name}
+                      {...(register && register(name, rules))}
+            />
         </FormElement>
     );
 };
