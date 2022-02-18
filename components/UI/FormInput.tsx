@@ -1,7 +1,6 @@
 import FormElement from "./FormElement";
 import Input from "./Input";
 import {IFormElement} from "../../types/components";
-import {ReactNode} from "react";
 
 interface IFormInput<T> extends IFormElement<T> {}
 

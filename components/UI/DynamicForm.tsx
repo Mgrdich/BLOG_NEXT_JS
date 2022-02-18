@@ -1,7 +1,5 @@
 import {FC} from 'react';
-import {
-    StyledControls,
-} from "../../styled/global";
+import {StyledControls} from "../../styled/global";
 import {inputFormProps} from "../../types/components";
 import {Dict} from "../../types/global";
 import FormInput from "./FormInput";
@@ -12,6 +10,7 @@ interface IDynamicForm {
     state: Dict
 }
 
+// TODO continue this
 const DynamicForm: FC<IDynamicForm> = ({formData}) => {
     return (
         <StyledControls>
