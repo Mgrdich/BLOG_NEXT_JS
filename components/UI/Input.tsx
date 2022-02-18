@@ -1,4 +1,4 @@
-import {FC, InputHTMLAttributes} from 'react';
+import {FC, forwardRef, InputHTMLAttributes} from 'react';
 import {
     StyledControl,
     StyledInput,
@@ -11,13 +11,17 @@ interface IInput extends InputHTMLAttributes<HTMLInputElement> {
     name: string;
 }
 
-const Input: FC<IInput> = ({id, label, name, ...props}) => {
-    return (
-        <StyledControl>
-            <StyledLabel>{label}</StyledLabel>
-            <StyledInput {...props} name={name} id={id}/>
-        </StyledControl>
-    );
-};
+const Input: FC<IInput> = forwardRef<HTMLInputElement, IInput>(
+    ({id, label, name, ...props}, ref) => {
+        return (
+            <StyledControl>
+                <StyledLabel>{label}</StyledLabel>
+                <StyledInput {...props} name={name} id={id}/>
+            </StyledControl>
+        );
+    }
+);
+
+Input.displayName = 'Input';
 
 export default Input;
