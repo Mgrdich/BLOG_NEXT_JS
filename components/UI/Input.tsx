@@ -1,23 +1,19 @@
-import {FC, HTMLInputTypeAttribute} from 'react';
+import {FC, InputHTMLAttributes} from 'react';
 import {
     StyledControl,
     StyledInput,
     StyledLabel
 } from "../../styled/global";
 
-interface IInput {
-    id: string,
-    label: string,
-    inputType: HTMLInputTypeAttribute | undefined
+interface IInput extends InputHTMLAttributes<HTMLInputElement>{
+    label: string;
 }
 
-const Input: FC<IInput> = ({id, label, inputType}) => {
+const Input: FC<IInput> = ({id, label, ...props}) => {
     return (
-        <StyledControl key={id}>
+        <StyledControl>
             <StyledLabel>{label}</StyledLabel>
-            <StyledInput type={inputType ? inputType : 'text'}
-                         id={id}
-            />
+            <StyledInput {...props}/>
         </StyledControl>
     );
 };

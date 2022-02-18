@@ -18,8 +18,8 @@ const DynamicForm: FC<IDynamicForm> = ({formData}) => {
             {
                 formData.map((item: inputFormProps) => (
                     item.inputRender === 'input' ?
-                        <Input id={item.id} inputType={item.inputType} label={item.label}/> :
-                        <Textarea/>
+                        <Input key={item.id} label={item.label}/> :
+                        <Textarea key={item.id} label={item.label}/>
                 ))
             }
         </StyledControls>
