@@ -1,14 +1,10 @@
-import {FC, forwardRef, InputHTMLAttributes} from 'react';
+import {FC, forwardRef} from 'react';
 import {
     StyledInput,
 } from "../../styled/global";
+import {IInputElement} from "../../types/components";
 
-interface IInput extends InputHTMLAttributes<HTMLInputElement> {
-    id: string;
-    name: string;
-}
-
-const Input: FC<IInput> = forwardRef<HTMLInputElement, IInput>(
+const Input: FC<IInputElement> = forwardRef<HTMLInputElement, IInputElement>(
     ({id, name, ...props}, ref) => {
         return (
                 <StyledInput {...props}

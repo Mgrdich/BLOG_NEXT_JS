@@ -1,10 +1,6 @@
-import {FC, forwardRef, TextareaHTMLAttributes} from 'react';
+import {FC, forwardRef} from 'react';
 import {StyledTextArea} from "../../styled/global";
-
-interface ITextArea extends TextareaHTMLAttributes<HTMLTextAreaElement> {
-    id: string;
-    name: string;
-}
+import {ITextArea} from "../../types/components";
 
 const Textarea: FC<ITextArea> = forwardRef<HTMLTextAreaElement, ITextArea>(
     ({id, name, ...props}, ref) => {
