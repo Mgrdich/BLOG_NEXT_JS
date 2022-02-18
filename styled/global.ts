@@ -38,12 +38,11 @@ export const StyledError = styled.label`
   font-size: 14px;
 `;
 
-// TODO the string type
 interface IFlexContainer {
     width: number;
-    flexDirection: string;
-    justifyContent: string;
-    alignItems: string;
+    flexDirection: 'row' | 'row-reverse' | 'column' | 'column-reverse';
+    justifyContent: 'start' | 'center' | 'space-between' | 'space-around' | 'space-evenly';
+    alignItems: 'stretch' | 'center' | 'start' | 'end';
     maxWidth: number;
     flexWrap: string;
     flexGrow: number;
@@ -67,12 +66,11 @@ export const FlexContainer = styled.div<IFlexContainer>`
   position: relative;
 `;
 
-// TODO the string type
 interface IFlexItem {
-    flex: number;
-    margin: string;
-    padding: string;
-    width: string;
+    flex: any; // TODO check me out
+    margin: number;
+    padding: number;
+    width: number;
 }
 
 export const FlexItem = styled.div<IFlexItem>`
