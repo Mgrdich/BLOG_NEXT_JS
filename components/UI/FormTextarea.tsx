@@ -1,10 +1,8 @@
 import FormElement from "./FormElement";
-import {IFormElement} from "../../types/components";
+import {IFormElement, ITextArea} from "../../types/components";
 import Textarea from "./Textarea";
 
-
-interface IFormTextarea<T> extends IFormElement<T> {
-}
+type IFormTextarea<T> = IFormElement<T> & ITextArea & Omit<ITextArea, 'name'>;
 
 const FormTextarea = <TFormValues extends Record<string, unknown>>
 ({

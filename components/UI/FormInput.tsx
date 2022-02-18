@@ -1,8 +1,9 @@
 import FormElement from "./FormElement";
 import Input from "./Input";
-import {IFormElement} from "../../types/components";
+import {IFormElement, IInputElement} from "../../types/components";
 
-interface IFormInput<T> extends IFormElement<T> {}
+
+type IFormInput<T> = IFormElement<T> & IInputElement & Omit<IInputElement, 'name'>;
 
 const FormInput = <TFormValues extends Record<string, unknown>>
 ({
@@ -12,12 +13,14 @@ const FormInput = <TFormValues extends Record<string, unknown>>
      register,
      rules,
      errors,
+    ...props
  }: IFormInput<TFormValues>): JSX.Element => {
     return (
         <FormElement label={label}>
             <Input id={id}
                    name={name}
                    {...(register && register(name, rules))}
+                   {...props}
             />
         </FormElement>
     );
