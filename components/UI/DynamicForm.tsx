@@ -4,8 +4,8 @@ import {
 } from "../../styled/global";
 import {inputFormProps} from "../../types/components";
 import {Dict} from "../../types/global";
-import Input from "./Input";
-import Textarea from "./Textarea";
+import FormInput from "./FormInput";
+import FormTextarea from "./FormTextarea";
 
 interface IDynamicForm {
     formData: inputFormProps[],
@@ -18,8 +18,8 @@ const DynamicForm: FC<IDynamicForm> = ({formData}) => {
             {
                 formData.map((item: inputFormProps) => (
                     item.inputRender === 'input' ?
-                        <Input key={item.id} label={item.label}/> :
-                        <Textarea key={item.id} label={item.label}/>
+                        <FormInput label={item.label} id={item.id} name={item.name}/>:
+                        <FormTextarea label={item.label} id={item.id} name={item.name}/>
                 ))
             }
         </StyledControls>

@@ -3,7 +3,8 @@ import {IFormElement} from "../../types/components";
 import Textarea from "./Textarea";
 
 
-interface IFormTextarea<T> extends IFormElement<T> {}
+interface IFormTextarea<T> extends IFormElement<T> {
+}
 
 const FormTextarea = <TFormValues extends Record<string, unknown>>
 ({
@@ -13,7 +14,7 @@ const FormTextarea = <TFormValues extends Record<string, unknown>>
      register,
      rules,
      errors,
- }: IFormTextarea<TFormValues>) => {
+ }: IFormTextarea<TFormValues>): JSX.Element => {
     return (
         <FormElement label={label}>
             <Textarea id={id}

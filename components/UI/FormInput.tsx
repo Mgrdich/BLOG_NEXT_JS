@@ -13,7 +13,7 @@ const FormInput = <TFormValues extends Record<string, unknown>>
      register,
      rules,
      errors,
- }: IFormInput<TFormValues>): ReactNode => {
+ }: IFormInput<TFormValues>): JSX.Element => {
     return (
         <FormElement label={label}>
             <Input id={id}
