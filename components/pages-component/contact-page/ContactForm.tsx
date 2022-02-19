@@ -1,7 +1,8 @@
 import {FC, FormEvent} from 'react';
 import styled from "styled-components";
 import {
-    StyledControls
+    FlexContainer,
+    FlexItem
 } from "../../../styled/global";
 import {useForm} from "react-hook-form";
 import FormInput from "../../UI/FormInput";
@@ -70,21 +71,26 @@ const ContactForm: FC = () => {
         <StyledContact>
             <StyledH1>How i can help you?</StyledH1>
             <form onSubmit={submitHandler}>
-                <StyledControls>
-                    <FormInput<ContactFormFields>
-                        label="Your mail"
-                        id="email"
-                        name="email"
-                        type="email"
-                        register={register}
-                    />
-                    <FormInput<ContactFormFields>
-                        label="Your Name"
-                        id="name"
-                        name="name"
-                        type="text"
-                        register={register}
-                    />
+                <FlexContainer margin="10px 0">
+                    <FlexItem flexBasis="50%">
+                        <FormInput<ContactFormFields>
+                            label="Your mail"
+                            id="email"
+                            name="email"
+                            type="email"
+                            register={register}
+                        />
+                    </FlexItem>
+                    <FlexItem flexBasis="50%">
+                        <FormInput<ContactFormFields>
+                            label="Your Name"
+                            id="name"
+                            name="name"
+                            type="text"
+                            register={register}
+                        />
+                    </FlexItem>
+                </FlexContainer>
                     <FormTextarea<ContactFormFields>
                         label="Your Message"
                         id="message"
@@ -95,7 +101,6 @@ const ContactForm: FC = () => {
                     <StyledActions>
                         <StyledButton type="submit">Send Message</StyledButton>
                     </StyledActions>
-                </StyledControls>
             </form>
         </StyledContact>
     );

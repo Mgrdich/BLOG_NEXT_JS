@@ -6,8 +6,8 @@ const Textarea: FC<ITextArea> = forwardRef<HTMLTextAreaElement, ITextArea>(
     ({id, name, ...props}, ref) => {
         return (
             <StyledTextArea {...props}
-                            id={id}
                             name={name}
+                            id={id}
                             ref={ref}
             />
         );
