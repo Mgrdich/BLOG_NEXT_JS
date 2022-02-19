@@ -13,10 +13,13 @@ const FormInput = <TFormValues extends Record<string, unknown>>
      register,
      rules,
      errors,
-    ...props
+     ...props
  }: IFormInput<TFormValues>): JSX.Element => {
+    const errorMessages:string = (errors ? errors[name] : '') as string;
+    const hasError:boolean = !!(errors && errorMessages);
+
     return (
-        <FormElement label={label}>
+        <FormElement label={label} error={hasError && errorMessages}>
             <Input id={id}
                    name={name}
                    {...(register && register(name, rules))}

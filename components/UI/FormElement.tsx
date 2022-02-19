@@ -1,10 +1,11 @@
 import {FC, ReactNode} from 'react';
 import {StyledLabel, StyledControl, StyledError} from "../../styled/global";
+import {FalseyValue} from "styled-components";
 
 interface IFormElement {
     label: string;
     children: ReactNode,
-    error?: string
+    error: string | FalseyValue
 }
 
 const FormElement: FC<IFormElement> = ({label, children, error}) => {
@@ -12,7 +13,7 @@ const FormElement: FC<IFormElement> = ({label, children, error}) => {
         <StyledControl>
             <StyledLabel>{label}</StyledLabel>
             {children}
-            <StyledError>{error}</StyledError>
+            {!!error && <StyledError>{error}</StyledError>}
         </StyledControl>
     );
 };

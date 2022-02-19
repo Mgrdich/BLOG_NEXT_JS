@@ -16,7 +16,7 @@ export interface IFormElement<T> {
     name: Path<T>;
     register?: UseFormRegister<T>;
     rules?: RegisterOptions;
-    errors?: DeepMap<T, FieldError>;
+    errors?: Partial<DeepMap<T, FieldError>>;
 }
 
 export interface IInputElement extends InputHTMLAttributes<HTMLInputElement>{
