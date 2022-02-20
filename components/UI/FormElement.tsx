@@ -12,7 +12,7 @@ const FormElement: FC<IFormElement> = ({label, children, error}) => {
         <StyledControl>
             <StyledLabel>{label}</StyledLabel>
             {children}
-            {error?.length && <StyledError>{error}</StyledError>}
+            {!!(error?.length) && <StyledError>{error}</StyledError>}
         </StyledControl>
     );
 };
