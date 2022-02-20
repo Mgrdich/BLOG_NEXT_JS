@@ -4,7 +4,7 @@ import {
     FlexContainer,
     FlexItem
 } from "../../../styled/global";
-import {useForm} from "react-hook-form";
+import {SubmitHandler, useForm} from "react-hook-form";
 import FormInput from "../../UI/FormInput";
 import FormTextarea from "../../UI/FormTextarea";
 
@@ -61,16 +61,14 @@ type ContactFormFields = {
 const ContactForm: FC = () => {
     const {register, handleSubmit, formState: {errors}} = useForm<ContactFormFields>();
 
-    const submitHandler = function (evt: FormEvent<HTMLFormElement>) {
-        console.log(evt);
-        evt.preventDefault();
-
+    const submitHandler: SubmitHandler<ContactFormFields> = function (data) {
+        console.log(data, errors);
     }
 
     return (
         <StyledContact>
             <StyledH1>How i can help you?</StyledH1>
-            <form onSubmit={submitHandler}>
+            <form onSubmit={handleSubmit(submitHandler)}>
                 <FlexContainer margin="10px 0">
                     <FlexItem flexBasis="50%">
                         <FormInput<ContactFormFields>
@@ -79,6 +77,10 @@ const ContactForm: FC = () => {
                             name="email"
                             type="email"
                             register={register}
+                            errors={errors}
+                            rules={{
+                                required: 'This field is required'
+                            }}
                         />
                     </FlexItem>
                     <FlexItem flexBasis="50%">
@@ -88,19 +90,27 @@ const ContactForm: FC = () => {
                             name="name"
                             type="text"
                             register={register}
+                            errors={errors}
+                            rules={{
+                                required: 'This field is required'
+                            }}
                         />
                     </FlexItem>
                 </FlexContainer>
-                    <FormTextarea<ContactFormFields>
-                        label="Your Message"
-                        id="message"
-                        name="message"
-                        rows={5}
-                        register={register}
-                    />
-                    <StyledActions>
-                        <StyledButton type="submit">Send Message</StyledButton>
-                    </StyledActions>
+                <FormTextarea<ContactFormFields>
+                    label="Your Message"
+                    id="message"
+                    name="message"
+                    rows={5}
+                    register={register}
+                    errors={errors}
+                    rules={{
+                        required: 'This field is required'
+                    }}
+                />
+                <StyledActions>
+                    <StyledButton type="submit">Send Message</StyledButton>
+                </StyledActions>
             </form>
         </StyledContact>
     );

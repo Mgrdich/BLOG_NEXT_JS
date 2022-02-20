@@ -22,8 +22,8 @@ const FormInput = <TFormValues extends Record<string, unknown>>
         <FormElement label={label} error={hasError && errorMessages}>
             <Input id={id}
                    name={name}
-                   {...(register && register(name, rules))}
                    {...props}
+                   {...(register && register(name, rules))}
             />
         </FormElement>
     );

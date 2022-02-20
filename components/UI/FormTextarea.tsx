@@ -12,6 +12,7 @@ const FormTextarea = <TFormValues extends Record<string, unknown>>
      register,
      rules,
      errors,
+     ...props
  }: IFormTextarea<TFormValues>): JSX.Element => {
     const errorMessages:string = (errors ? errors[name] : '') as string;
     const hasError:boolean = !!(errors && errorMessages);
@@ -20,6 +21,7 @@ const FormTextarea = <TFormValues extends Record<string, unknown>>
         <FormElement label={label} error={hasError && errorMessages}>
             <Textarea id={id}
                       name={name}
+                      {...props}
                       {...(register && register(name, rules))}
             />
         </FormElement>

@@ -8,7 +8,7 @@ export const StyledLabel: FC = styled.label`
   margin: var(--size-2) 0 var(--size-1) 0;
 `;
 
-export const StyledInput= styled.input`
+export const StyledInput = styled.input`
   font: inherit;
   padding: var(--size-1);
   border-radius: 4px;
@@ -19,7 +19,9 @@ export const StyledInput= styled.input`
   max-width: 100%;
 `;
 
-export const StyledTextArea = styled.textarea(StyledInput);
+export const StyledTextArea = styled.textarea`
+  ${StyledInput};
+`;
 
 export const StyledControls: FC = styled.div`
   display: flex;
@@ -37,6 +39,8 @@ export const StyledError: FC = styled.label`
   position: absolute;
   color: red;
   font-size: 14px;
+  left: 0;
+  top: 100%;
 `;
 
 interface IFlexContainer {
@@ -44,12 +48,12 @@ interface IFlexContainer {
     flexDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
     justifyContent?: 'start' | 'center' | 'space-between' | 'space-around' | 'space-evenly';
     alignItems?: 'stretch' | 'center' | 'start' | 'end';
+    cursor?: 'help' | 'wait' | 'crosshair' | 'pointer' | 'grab';
     maxWidth?: number;
     flexWrap?: string;
     flexGrow?: number;
     padding?: string;
     margin?: string;
-    cursor?: 'help' | 'wait' | 'crosshair' | 'pointer' | 'grab';
 }
 
 export const FlexContainer: FC<IFlexContainer> = styled.div<IFlexContainer>`
@@ -68,8 +72,8 @@ export const FlexContainer: FC<IFlexContainer> = styled.div<IFlexContainer>`
 `;
 
 interface IFlexItem {
-    flex?: any; // TODO check me out
-    flexBasis?: string; // TODO check me out
+    flex?: string;
+    flexBasis?: string;
     margin?: string;
     padding?: string;
     width?: string;
