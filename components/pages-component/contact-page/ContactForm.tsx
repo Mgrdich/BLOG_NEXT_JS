@@ -1,4 +1,4 @@
-import {FC, FormEvent} from 'react';
+import {FC} from 'react';
 import styled from "styled-components";
 import {
     FlexContainer,
@@ -72,7 +72,7 @@ const ContactForm: FC = () => {
         }).then(res => res.json());
 
         if (res.status) {
-
+            // show a notification
         }
     }
 
