@@ -1,4 +1,4 @@
-import {MongoClient} from "mongodb";
+import {Db, MongoClient} from "mongodb";
 
 export default class DB {
 
@@ -17,8 +17,14 @@ export default class DB {
             .then((db) => {
                 this.dataBaseStatus = true;
                 this.db_connection = db;
+                if(process.env.NODE_ENV === "development") {
+                    console.log("DataBase is connected");
+                }
                 return this.db_connection
             }).catch(err => {
+                if(process.env.NODE_ENV === "development") {
+                    console.log("DataBase has error in connection");
+                }
                 this.dataBaseStatus = false;
                 return err;
             });
@@ -36,7 +42,7 @@ export default class DB {
         return this._instance;
     }
 
-    public get value(): MongoClient {
-        return DB.db_connection;
+    public get value():Db {
+        return DB.db_connection.db();
     }
 }
