@@ -7,6 +7,7 @@ import {
 import {SubmitHandler, useForm} from "react-hook-form";
 import FormInput from "../../UI/FormInput";
 import FormTextarea from "../../UI/FormTextarea";
+import {API_Response} from "../../../types/global";
 
 
 const StyledContact = styled.section`
@@ -61,8 +62,18 @@ type ContactFormFields = {
 const ContactForm: FC = () => {
     const {register, handleSubmit, formState: {errors}} = useForm<ContactFormFields>();
 
-    const submitHandler: SubmitHandler<ContactFormFields> = function (data) {
-        console.log(data, errors);
+    const submitHandler: SubmitHandler<ContactFormFields> = async function (data): Promise<void> {
+        const res: API_Response = await fetch('/api/contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(res => res.json());
+
+        if (res.status) {
+
+        }
     }
 
     return (
