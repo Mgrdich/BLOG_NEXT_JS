@@ -6,7 +6,7 @@ export default class DB {
 
     private static dataBaseStatus: boolean = false;
 
-    private static db_connection: MongoClient | undefined;
+    private static db_connection: MongoClient;
 
     private static async connect(): Promise<MongoClient> {
         if (this.db_connection) {
@@ -36,7 +36,7 @@ export default class DB {
         return this._instance;
     }
 
-    public get value() {
+    public get value(): MongoClient {
         return DB.db_connection;
     }
 }

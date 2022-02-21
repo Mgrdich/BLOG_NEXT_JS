@@ -1,11 +1,13 @@
 import type {NextApiRequest, NextApiResponse} from 'next'
+import DB from "../../util/DB";
+import {MongoClient} from "mongodb";
 
 type Data = {
     status: number;
     message?: string;
 }
 
-function contactPostHandler(req: NextApiRequest, res: NextApiResponse<Data>) {
+async function contactPostHandler(req: NextApiRequest, res: NextApiResponse<Data>) {
     const {email, name, message} = req.body;
 
     // TODO maybe implement it with a library
@@ -21,6 +23,11 @@ function contactPostHandler(req: NextApiRequest, res: NextApiResponse<Data>) {
         name,
         message
     };
+
+    let connection:DB = await DB.Instance();
+
+    let db:MongoClient = connection.value;
+
 
     return res.status(201)
         .json({status: 1, message: 'Message created successfully'})
