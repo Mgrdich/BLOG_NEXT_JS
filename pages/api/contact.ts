@@ -1,10 +1,17 @@
 import type {NextApiRequest, NextApiResponse} from 'next'
 import DB from "../../util/DB";
-import {MongoClient} from "mongodb";
+import {Db, InsertOneResult} from "mongodb";
+import Utils from "../../util/Utils";
 
 type Data = {
     status: number;
     message?: string;
+}
+
+type message = {
+    email: string;
+    name: string;
+    message: string;
 }
 
 async function contactPostHandler(req: NextApiRequest, res: NextApiResponse<Data>) {
@@ -18,19 +25,26 @@ async function contactPostHandler(req: NextApiRequest, res: NextApiResponse<Data
         return res.status(422).json({status: 0, message: 'Invalid Input'});
     }
 
-    const newMessage = {
+    const newMessage: message = {
         email,
         name,
         message
     };
 
-    let connection:DB = await DB.Instance();
+    try {
+        // it caches the connection so no worries :)
+        let connection: DB = await DB.Instance();
 
-    let db:MongoClient = connection.value;
-
-
-    return res.status(201)
-        .json({status: 1, message: 'Message created successfully'})
+        let db: Db = connection.value;
+        let response: InsertOneResult<message> = await db.collection('messages').insertOne(newMessage);
+        if (!response.acknowledged) {
+            return Utils.errorReturn(res);
+        }
+        return res.status(201)
+            .json({status: 1, message: 'Message created successfully'});
+    } catch (err) {
+        return Utils.errorReturn(res);
+    }
 }
 
 export default function handler(

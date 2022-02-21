@@ -1,4 +1,5 @@
 import {Db, MongoClient} from "mongodb";
+import Utils from "./Utils";
 
 export default class DB {
 
@@ -17,14 +18,10 @@ export default class DB {
             .then((db) => {
                 this.dataBaseStatus = true;
                 this.db_connection = db;
-                if(process.env.NODE_ENV === "development") {
-                    console.log("DataBase is connected");
-                }
+                Utils.log("DataBase is connected");
                 return this.db_connection
             }).catch(err => {
-                if(process.env.NODE_ENV === "development") {
-                    console.log("DataBase has error in connection");
-                }
+                Utils.log("DataBase has error in connection");
                 this.dataBaseStatus = false;
                 return err;
             });
