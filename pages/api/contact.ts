@@ -2,11 +2,7 @@ import type {NextApiRequest, NextApiResponse} from 'next'
 import DB from "../../util/DB";
 import {Db, InsertOneResult} from "mongodb";
 import Utils from "../../util/Utils";
-
-type Data = {
-    status: number;
-    message?: string;
-}
+import {API_Response} from "../../types/global";
 
 type message = {
     email: string;
@@ -14,7 +10,7 @@ type message = {
     message: string;
 }
 
-async function contactPostHandler(req: NextApiRequest, res: NextApiResponse<Data>) {
+async function contactPostHandler(req: NextApiRequest, res: NextApiResponse<API_Response>) {
     const {email, name, message} = req.body;
 
     // TODO maybe implement it with a library
@@ -49,7 +45,7 @@ async function contactPostHandler(req: NextApiRequest, res: NextApiResponse<Data
 
 export default function handler(
     req: NextApiRequest,
-    res: NextApiResponse<Data>
+    res: NextApiResponse<API_Response>
 ) {
     if (req.method === 'POST') {
         return contactPostHandler(req, res);

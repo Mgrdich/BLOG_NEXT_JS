@@ -1,9 +1,5 @@
 import {NextApiResponse} from "next";
-
-interface Data {
-    status: number;
-    message?: string;
-}
+import {API_Response} from "../types/global";
 
 export default class Utils {
     static log(message?: any, ...optionalParams: any[]): void {
@@ -12,8 +8,7 @@ export default class Utils {
         }
     }
 
-    // TODO fix this extension
-    static errorReturn<D extends Data>(res: NextApiResponse<Data>, text: string = 'Something went Wrong') {
+    static errorReturn(res: NextApiResponse<API_Response>, text: string = 'Something went Wrong') {
         return res.status(301).json({
             status: 0,
             message: text
