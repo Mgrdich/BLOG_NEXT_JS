@@ -36,8 +36,7 @@ async function contactPostHandler(req: NextApiRequest, res: NextApiResponse<API_
         if (!response.acknowledged) {
             return Utils.errorReturn(res);
         }
-        return res.status(201)
-            .json({status: 1, message: 'Message created successfully'});
+        return Utils.createdSuccessfully(res, 'Message created successfully');
     } catch (err) {
         return Utils.errorReturn(res);
     }

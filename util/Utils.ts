@@ -14,4 +14,12 @@ export default class Utils {
             message: text
         });
     }
+
+    static createdSuccessfully(res: NextApiResponse<API_Response> , text: string = 'created Successfully' , content?: any) {
+        return res.status(201).json({
+            status: 1,
+            message: text,
+            ...content
+        });
+    }
 }
