@@ -8,6 +8,7 @@ import {SubmitHandler, useForm} from "react-hook-form";
 import FormInput from "../../UI/FormInput";
 import FormTextarea from "../../UI/FormTextarea";
 import {API_Response} from "../../../types/global";
+import toast, { Toaster } from 'react-hot-toast';
 
 
 const StyledContact = styled.section`
@@ -73,7 +74,11 @@ const ContactForm: FC = () => {
 
         if (res.status) {
             // show a notification
+            toast.success(res.message);
+            return;
         }
+
+        toast.error(res.message);
     }
 
     return (
@@ -123,6 +128,7 @@ const ContactForm: FC = () => {
                     <StyledButton type="submit">Send Message</StyledButton>
                 </StyledActions>
             </form>
+            <Toaster />
         </StyledContact>
     );
 };
