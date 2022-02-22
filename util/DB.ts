@@ -5,11 +5,11 @@ export default class DB {
 
     private static _instance: DB;
 
-    private static dataBaseStatus: boolean = false;
+    private dataBaseStatus: boolean = false;
 
-    private static db_connection: MongoClient;
+    private db_connection: MongoClient | undefined;
 
-    private static async connect(): Promise<MongoClient> {
+    private connect(): Promise<MongoClient> {
         if (this.db_connection) {
             return Promise.resolve(this.db_connection);
         }
@@ -31,15 +31,15 @@ export default class DB {
 
     public static async Instance(): Promise<DB> {
         if (this._instance) {
-            return Promise.resolve(this._instance);
+            return this._instance;
         }
 
         this._instance = new DB();
-        await this.connect();
+        await this._instance.connect();
         return this._instance;
     }
 
-    public get value():Db {
-        return DB.db_connection.db();
+    public getDbConnection(): Db {
+        return (this.db_connection as MongoClient).db();
     }
 }

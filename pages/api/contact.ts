@@ -31,7 +31,7 @@ async function contactPostHandler(req: NextApiRequest, res: NextApiResponse<API_
         // it caches the connection so no worries :)
         let connection: DB = await DB.Instance();
 
-        let db: Db = connection.value;
+        let db: Db = connection.getDbConnection();
         let response: InsertOneResult<message> = await db.collection('messages').insertOne(newMessage);
         if (!response.acknowledged) {
             return Utils.errorReturn(res);
