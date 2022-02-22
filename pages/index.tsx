@@ -3,6 +3,7 @@ import Hero from "../components/pages-component/home-page/Hero";
 import FeaturedPosts from "../components/pages-component/home-page/FeaturedPosts";
 import {postDetails} from "../types/posts";
 import Lib_Posts_Server from "../util/Lib_Posts_Server";
+import Head from 'next/head';
 
 interface IStaticProps {
     posts: postDetails
@@ -11,6 +12,10 @@ interface IStaticProps {
 const HomePage: NextPage<IStaticProps> = ({posts}) => {
     return (
         <>
+            <Head>
+                <title>Mgos Blog</title>
+                <meta name="description" content="I post about nonsense"/>
+            </Head>
             <Hero/>
             <FeaturedPosts posts={posts}/>
         </>
