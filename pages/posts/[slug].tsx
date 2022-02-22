@@ -3,6 +3,7 @@ import PostContent from "../../components/posts/post-detail/PostContent";
 import {postDetail} from "../../types/posts";
 import {ParsedUrlQuery} from "querystring";
 import Lib_Posts_Server from "../../util/Lib_Posts_Server";
+import Head from "next/head";
 
 interface IStaticProps {
     post: postDetail
@@ -14,11 +15,19 @@ interface IParams extends ParsedUrlQuery {
 
 const PostDetailPage: NextPage<IStaticProps> = ({post}) => {
     return (
-        <PostContent content={post.paragraphDetailed}
-                     title={post.header}
-                     image={post.image}
-                     slug={post.slug}
-        />
+
+        <>
+            <Head>
+                <title>{post.header}</title>
+                <meta name="description" content={post.header}/>
+            </Head>
+            <PostContent content={post.paragraphDetailed}
+                         title={post.header}
+                         image={post.image}
+                         slug={post.slug}
+            />
+
+        </>
     );
 };
 
